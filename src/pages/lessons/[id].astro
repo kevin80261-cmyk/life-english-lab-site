@@ -9,7 +9,7 @@ const lesson = lessons.find((l) => l.id === Astro.params.id)!;
 const idx = lessons.indexOf(lesson);
 const next = lessons[idx + 1];
 ---
-<Base title={lesson.date ? `${lesson.title}英文圖卡（${lesson.date}）` : `${lesson.title}英文`} description={`${lesson.title}（${lesson.titleEn}）常用英文：${lesson.words.length} 個單字、${lesson.sentences.length} 句情境句，附發音、翻卡與小測驗。`}>
+<Base jsonLd={{ '@context': 'https://schema.org', '@type': 'LearningResource', name: `${lesson.title}英文`, description: lesson.intro, inLanguage: ['zh-Hant-TW', 'en'], learningResourceType: '互動課程', educationalLevel: lesson.level, isAccessibleForFree: true, teaches: lesson.words.map((w) => w.en).join(', ') }} title={lesson.date ? `${lesson.title}英文圖卡（${lesson.date}）` : `${lesson.title}英文`} description={`${lesson.title}（${lesson.titleEn}）常用英文：${lesson.words.length} 個單字、${lesson.sentences.length} 句情境句，附發音、翻卡與小測驗。`}>
   <p class="crumb"><a href="/">課程</a> › {lesson.title}</p>
   <header class="head">
     <span class="tag">{lesson.level}</span>
