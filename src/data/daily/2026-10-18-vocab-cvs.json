@@ -1,0 +1,74 @@
+{
+  "id": "2026-10-18-vocab-cvs",
+  "type": "vocab",
+  "title": "便利商店",
+  "title_en": "Convenience Store",
+  "subtitle": "結帳、加熱、繳費都用得到",
+  "items": [
+    {
+      "icon": "🧾",
+      "en": "receipt",
+      "zh": "收據、發票"
+    },
+    {
+      "icon": "🛍️",
+      "en": "plastic bag",
+      "zh": "塑膠袋"
+    },
+    {
+      "icon": "🔥",
+      "en": "heat up",
+      "zh": "加熱"
+    },
+    {
+      "icon": "💳",
+      "en": "pay by card",
+      "zh": "刷卡"
+    },
+    {
+      "icon": "📱",
+      "en": "mobile payment",
+      "zh": "行動支付"
+    },
+    {
+      "icon": "⭐",
+      "en": "points card",
+      "zh": "集點卡"
+    },
+    {
+      "icon": "🥤",
+      "en": "iced coffee",
+      "zh": "冰咖啡"
+    },
+    {
+      "icon": "📦",
+      "en": "pick up a package",
+      "zh": "取包裹"
+    },
+    {
+      "icon": "💸",
+      "en": "pay a bill",
+      "zh": "繳帳單"
+    },
+    {
+      "icon": "🖨️",
+      "en": "make a copy",
+      "zh": "影印"
+    },
+    {
+      "icon": "🙋",
+      "en": "cashier",
+      "zh": "店員、收銀員"
+    },
+    {
+      "icon": "🍱",
+      "en": "microwave",
+      "zh": "微波爐、微波"
+    }
+  ],
+  "tip": {
+    "label": "店員最常問",
+    "en": "Would you like it heated up?",
+    "zh": "要幫你加熱嗎？"
+  }
+}

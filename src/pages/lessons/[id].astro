@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { lessons } from '../../data/lessons';
+import { allLessons as lessons } from '../../data/lessons';
 
 export function getStaticPaths() {
   return lessons.map((l) => ({ params: { id: l.id } }));
@@ -9,7 +9,7 @@ const lesson = lessons.find((l) => l.id === Astro.params.id)!;
 const idx = lessons.indexOf(lesson);
 const next = lessons[idx + 1];
 ---
-<Base title={`${lesson.title}英文`} description={`${lesson.title}（${lesson.titleEn}）常用英文：${lesson.words.length} 個單字、${lesson.sentences.length} 句情境句，附發音、翻卡與小測驗。`}>
+<Base title={lesson.date ? `${lesson.title}英文圖卡（${lesson.date}）` : `${lesson.title}英文`} description={`${lesson.title}（${lesson.titleEn}）常用英文：${lesson.words.length} 個單字、${lesson.sentences.length} 句情境句，附發音、翻卡與小測驗。`}>
   <p class="crumb"><a href="/">課程</a> › {lesson.title}</p>
   <header class="head">
     <span class="tag">{lesson.level}</span>
@@ -17,6 +17,7 @@ const next = lessons[idx + 1];
     <p>{lesson.intro}</p>
     <p class="tip">點 🔊 聽發音；點卡片翻面看中文和例句。</p>
   </header>
+  {lesson.image && <img class="daily-img card" src={lesson.image} alt={`${lesson.title}英文圖卡`} width="1080" height="1350" loading="lazy" />}
 
   <section>
     <h2>① 單字卡</h2>
@@ -30,16 +31,16 @@ const next = lessons[idx + 1];
           </div>
           <div class="face back card">
             <b>{w.zh}</b>
-            <span class="ex">{w.ex}</span>
-            <span class="exzh">{w.exZh}</span>
-            <button class="say" data-say={w.ex} aria-label="唸例句">🔊</button>
+            {w.ex && <span class="ex">{w.ex}</span>}
+            {w.exZh && <span class="exzh">{w.exZh}</span>}
+            <button class="say" data-say={w.ex || w.en} aria-label="再唸一次">🔊</button>
           </div>
         </div>
       ))}
     </div>
   </section>
 
-  <section>
+  <section hidden={lesson.sentences.length === 0}>
     <h2>② 情境句子・跟著唸</h2>
     <ol class="sents">
       {lesson.sentences.map((s) => (
@@ -103,7 +104,7 @@ const next = lessons[idx + 1];
   const words = data.words;
   type Q = { kind: 'zh2en' | 'listen' | 'spell'; w: Word };
   const kinds: Q['kind'][] = ['zh2en', 'listen', 'spell'];
-  const questions: Q[] = shuffle(words).slice(0, Math.min(8, words.length)).map((w, i) => ({ kind: kinds[i % 3], w }));
+  const questions: Q[] = shuffle(words).slice(0, Math.min(8, words.length)).map((w, i) => ({ kind: w.en.length > 20 && kinds[i % 3] === 'spell' ? 'zh2en' : kinds[i % 3], w }));
   let i = 0, score = 0, answered = false;
   const box = document.getElementById('quiz')!;
   const $ = (s: string) => box.querySelector<HTMLElement>(s)!;
@@ -215,5 +216,6 @@ const next = lessons[idx + 1];
   .q-feedback.good { color: var(--good); }
   .q-feedback.bad { color: var(--bad); }
   .next { text-align: right; margin-top: 28px; }
+  .daily-img { display: block; width: 100%; max-width: 420px; height: auto; margin: 12px 0; padding: 0; overflow: hidden; }
   @media (max-width: 600px) { .head h1 { font-size: 28px; } .words { grid-template-columns: repeat(2, 1fr); } .flip { height: 160px; } }
 </style>

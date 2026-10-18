@@ -1,7 +1,7 @@
 // 課程資料：每一課 = 一個生活情境。新增課程只要在這裡加一筆。
 // 單字的 example 一定要是母語人士自然會說的句子；中文用台灣說法。
 
-export interface Word { icon: string; en: string; zh: string; ex: string; exZh: string }
+export interface Word { icon: string; en: string; zh: string; ex?: string; exZh?: string }
 export interface Sentence { en: string; zh: string; note?: string }
 export interface Lesson {
   id: string;
@@ -12,17 +12,20 @@ export interface Lesson {
   intro: string;
   words: Word[];
   sentences: Sentence[];
+  image?: string; // 每日圖卡的圖（public 底下的路徑）
+  date?: string;
 }
 
 export const units = [
-  { id: 'daily', title: '第一單元：日常生活', desc: '超商、搭車、吃飯，每天都會遇到的英文' },
+  { id: 'life', title: '第一單元：日常生活', desc: '超商、搭車、吃飯，每天都會遇到的英文' },
   { id: 'phrases', title: '第二單元：這句英文怎麼說', desc: '「我先走了」「辛苦了」這類中文常說的話' },
+  { id: 'daily', title: '每日圖卡', desc: '粉專每天發的圖卡，都在這裡變成一堂小課' },
 ];
 
 export const lessons: Lesson[] = [
   {
     id: 'convenience-store',
-    unit: 'daily',
+    unit: 'life',
     title: '便利商店',
     titleEn: 'Convenience Store',
     level: '入門',
@@ -51,7 +54,7 @@ export const lessons: Lesson[] = [
   },
   {
     id: 'taking-a-taxi',
-    unit: 'daily',
+    unit: 'life',
     title: '搭計程車',
     titleEn: 'Taking a Taxi',
     level: '入門',
@@ -97,3 +100,23 @@ export const lessons: Lesson[] = [
     ],
   },
 ];
+
+// 每日圖卡：專案的 scripts/sync_site.py 會把發過的圖卡 JSON 放進 src/data/daily/、圖放進 public/daily/
+type Card = Record<string, any>;
+const cards = Object.values(import.meta.glob<Card>('./daily/*.json', { eager: true, import: 'default' }));
+const short = (t: string) => t.length <= 22;
+function fromCard(c: Card): Lesson | null {
+  const base = { id: `daily-${c.id}`, unit: 'daily', level: '入門' as const, image: `/daily/${c.id}.png`, date: c.id.slice(0, 10),
+    title: (c.title || '').replace(/[「」]/g, ''), titleEn: c.title_en || '', intro: c.subtitle || '' };
+  let words: Word[] = [], sentences: Sentence[] = [];
+  if (c.type === 'vocab') words = c.items.map((i: Card) => ({ icon: i.icon, en: i.en, zh: i.zh }));
+  if (c.type === 'scene') words = c.labels.map((i: Card) => ({ icon: '🔎', en: i.en, zh: i.zh }));
+  if (c.type === 'howto') { words = c.items.map((i: Card) => ({ icon: '💬', en: i.en, zh: i.zh })); sentences = c.items.map((i: Card) => ({ en: i.en, zh: i.zh, note: i.note })); }
+  if (c.type === 'sentences') { sentences = c.items; words = c.items.filter((i: Card) => short(i.en)).map((i: Card) => ({ icon: '💬', en: i.en, zh: i.zh })); }
+  if (c.type === 'compare') { words = c.sides.flatMap((s: Card) => s.examples.map((x: Card) => ({ icon: s.word === c.sides[0].word ? '👉' : '👈', en: x.en, zh: x.zh }))); base.titleEn = c.subtitle || ''; }
+  if (c.tip?.en) sentences.push({ en: c.tip.en, zh: c.tip.zh, note: c.tip.label });
+  if (words.length < 4) return null;
+  return { ...base, words, sentences };
+}
+export const dailyLessons = cards.map(fromCard).filter((l): l is Lesson => !!l).sort((a, b) => (b.date! > a.date! ? 1 : -1));
+export const allLessons = [...lessons, ...dailyLessons];

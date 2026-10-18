@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { units, lessons } from '../data/lessons';
+import { units, allLessons as lessons } from '../data/lessons';
 ---
 <Base title="生活英文研究所" description="跟著石虎研究員小石 Leo，用互動小課程學台灣生活裡用得到的英文：發音、翻卡、情境句子、小測驗，免費、免註冊。">
   <section class="hero card">
@@ -12,7 +12,7 @@ import { units, lessons } from '../data/lessons';
     </div>
   </section>
 
-  {units.map((u) => (
+  {units.filter((u) => lessons.some((l) => l.unit === u.id)).map((u) => (
     <section class="unit">
       <h2>{u.title}</h2>
       <p class="desc">{u.desc}</p>
