@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+import { units, lessons } from '../data/lessons';
+---
+<Base title="生活英文研究所" description="跟著石虎研究員小石 Leo，用互動小課程學台灣生活裡用得到的英文：發音、翻卡、情境句子、小測驗，免費、免註冊。">
+  <section class="hero card">
+    <img src="/leo-cards.jpg" alt="石虎研究員小石 Leo 拿著單字卡" width="220" height="220" />
+    <div>
+      <h1>跟小石一起研究<br />生活裡的英文</h1>
+      <p>每一課都是一個台灣生活情境：聽發音、翻單字卡、跟讀句子，最後做個小測驗。免費、免註冊，進度會自動記在你的瀏覽器裡。</p>
+      <a class="btn" href={`/lessons/${lessons[0].id}/`}>從第一課開始 →</a>
+    </div>
+  </section>
+
+  {units.map((u) => (
+    <section class="unit">
+      <h2>{u.title}</h2>
+      <p class="desc">{u.desc}</p>
+      <div class="grid">
+        {lessons.filter((l) => l.unit === u.id).map((l) => (
+          <a class="lesson card" href={`/lessons/${l.id}/`} data-lesson={l.id}>
+            <span class="tag">{l.level}</span>
+            <span class="done" hidden>✔ 已完成</span>
+            <h3>{l.title}</h3>
+            <p class="en">{l.titleEn}</p>
+            <p class="intro">{l.intro}</p>
+            <p class="meta">{l.words.length} 個單字・{l.sentences.length} 句情境句<span class="score"></span></p>
+          </a>
+        ))}
+      </div>
+    </section>
+  ))}
+</Base>
+
+<script>
+  try {
+    const p = JSON.parse(localStorage.getItem('lel-progress') || '{}');
+    document.querySelectorAll<HTMLElement>('[data-lesson]').forEach((el) => {
+      const r = p[el.dataset.lesson!];
+      if (!r) return;
+      el.querySelector<HTMLElement>('.done')!.hidden = false;
+      el.querySelector<HTMLElement>('.score')!.textContent = `・最佳 ${r.best} 分`;
+    });
+  } catch {}
+</script>
+
+<style>
+  .hero { display: flex; gap: 24px; align-items: center; padding: 22px; margin: 8px 0 28px; }
+  .hero img { border-radius: 16px; flex: none; width: 200px; height: 200px; object-fit: cover; }
+  .hero h1 { font-size: 34px; line-height: 1.25; margin: 0 0 8px; }
+  .hero p { color: var(--muted); margin: 0 0 16px; }
+  .unit h2 { font-size: 24px; margin: 24px 0 2px; }
+  .desc { color: var(--muted); margin: 0 0 12px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+  .lesson { display: block; padding: 16px 18px; color: var(--ink); text-decoration: none; position: relative; transition: transform .15s; }
+  .lesson:hover { transform: translateY(-3px); }
+  .lesson h3 { font-size: 24px; margin: 8px 0 0; }
+  .lesson .en { margin: 0; color: var(--teal); font-weight: 700; }
+  .lesson .intro { color: var(--muted); font-size: 15px; margin: 8px 0; }
+  .lesson .meta { font-size: 13px; color: var(--muted); margin: 0; }
+  .done { position: absolute; top: 16px; right: 16px; color: var(--good); font-weight: 700; font-size: 14px; }
+  @media (max-width: 600px) {
+    .hero { flex-direction: column; text-align: center; }
+    .hero h1 { font-size: 28px; }
+  }
+</style>

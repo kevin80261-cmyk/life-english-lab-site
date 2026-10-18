@@ -1,0 +1,219 @@
+---
+import Base from '../../layouts/Base.astro';
+import { lessons } from '../../data/lessons';
+
+export function getStaticPaths() {
+  return lessons.map((l) => ({ params: { id: l.id } }));
+}
+const lesson = lessons.find((l) => l.id === Astro.params.id)!;
+const idx = lessons.indexOf(lesson);
+const next = lessons[idx + 1];
+---
+<Base title={`${lesson.title}英文`} description={`${lesson.title}（${lesson.titleEn}）常用英文：${lesson.words.length} 個單字、${lesson.sentences.length} 句情境句，附發音、翻卡與小測驗。`}>
+  <p class="crumb"><a href="/">課程</a> › {lesson.title}</p>
+  <header class="head">
+    <span class="tag">{lesson.level}</span>
+    <h1>{lesson.title} <span class="en">{lesson.titleEn}</span></h1>
+    <p>{lesson.intro}</p>
+    <p class="tip">點 🔊 聽發音；點卡片翻面看中文和例句。</p>
+  </header>
+
+  <section>
+    <h2>① 單字卡</h2>
+    <div class="words">
+      {lesson.words.map((w) => (
+        <div class="flip" tabindex="0">
+          <div class="face front card">
+            <span class="icon">{w.icon}</span>
+            <b>{w.en}</b>
+            <button class="say" data-say={w.en} aria-label={`唸 ${w.en}`}>🔊</button>
+          </div>
+          <div class="face back card">
+            <b>{w.zh}</b>
+            <span class="ex">{w.ex}</span>
+            <span class="exzh">{w.exZh}</span>
+            <button class="say" data-say={w.ex} aria-label="唸例句">🔊</button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <h2>② 情境句子・跟著唸</h2>
+    <ol class="sents">
+      {lesson.sentences.map((s) => (
+        <li class="card">
+          <div>
+            <b>{s.en}</b>{s.note && <span class="tag note">{s.note}</span>}
+            <span class="zh">{s.zh}</span>
+          </div>
+          <span class="btns">
+            <button class="say" data-say={s.en} aria-label="正常速度">🔊</button>
+            <button class="say slow" data-say={s.en} data-rate="0.65" aria-label="慢速">🐢</button>
+          </span>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section>
+    <h2>③ 小測驗</h2>
+    <div id="quiz" class="card quiz">
+      <p class="q-progress"></p>
+      <p class="q-text"></p>
+      <div class="q-body"></div>
+      <p class="q-feedback" aria-live="polite"></p>
+      <button class="btn q-next" hidden>下一題</button>
+    </div>
+  </section>
+
+  {next && <p class="next"><a class="btn ghost" href={`/lessons/${next.id}/`}>下一課：{next.title} →</a></p>}
+  <script type="application/json" id="lesson-data" set:html={JSON.stringify({ id: lesson.id, words: lesson.words })} />
+</Base>
+
+<script>
+  type Word = { icon: string; en: string; zh: string; ex: string; exZh: string };
+  const data = JSON.parse(document.getElementById('lesson-data')!.textContent!) as { id: string; words: Word[] };
+
+  // 發音：用瀏覽器內建的英文語音，免費、不用外部服務
+  function say(text: string, rate = 0.9) {
+    if (!('speechSynthesis' in window)) return;
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-US';
+    u.rate = rate;
+    const v = speechSynthesis.getVoices().find((v) => v.lang === 'en-US');
+    if (v) u.voice = v;
+    speechSynthesis.speak(u);
+  }
+  document.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest<HTMLElement>('.say');
+    if (b) { e.stopPropagation(); say(b.dataset.say!, Number(b.dataset.rate || 0.9)); return; }
+    const f = (e.target as HTMLElement).closest<HTMLElement>('.flip');
+    if (f) f.classList.toggle('on');
+  });
+  document.addEventListener('keydown', (e) => {
+    const f = (e.target as HTMLElement).closest?.('.flip');
+    if (f && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); f.classList.toggle('on'); }
+  });
+
+  // 小測驗：看中文選英文、聽發音選中文、拼字，題目每次重新洗牌
+  const shuffle = <T,>(a: T[]) => a.map((x) => [Math.random(), x] as const).sort((p, q) => p[0] - q[0]).map((p) => p[1]);
+  const words = data.words;
+  type Q = { kind: 'zh2en' | 'listen' | 'spell'; w: Word };
+  const kinds: Q['kind'][] = ['zh2en', 'listen', 'spell'];
+  const questions: Q[] = shuffle(words).slice(0, Math.min(8, words.length)).map((w, i) => ({ kind: kinds[i % 3], w }));
+  let i = 0, score = 0, answered = false;
+  const box = document.getElementById('quiz')!;
+  const $ = (s: string) => box.querySelector<HTMLElement>(s)!;
+
+  function options(w: Word, field: 'en' | 'zh') {
+    return shuffle([w, ...shuffle(words.filter((x) => x !== w)).slice(0, 3)]).map((x) => x[field]);
+  }
+  function finish(ok: boolean, right: string) {
+    answered = true;
+    if (ok) score++;
+    $('.q-feedback').innerHTML = ok ? '✅ 答對了！' : `❌ 正確答案：<b>${right}</b>`;
+    $('.q-feedback').className = 'q-feedback ' + (ok ? 'good' : 'bad');
+    $('.q-next').hidden = false;
+    $('.q-next').textContent = i === questions.length - 1 ? '看結果' : '下一題';
+  }
+  function render() {
+    answered = false;
+    const q = questions[i];
+    $('.q-progress').textContent = `第 ${i + 1} / ${questions.length} 題`;
+    $('.q-feedback').textContent = '';
+    $('.q-next').hidden = true;
+    const body = $('.q-body');
+    body.innerHTML = '';
+    if (q.kind === 'spell') {
+      $('.q-text').innerHTML = `拼拼看：「<b>${q.w.zh}</b>」的英文是？ <button class="say" data-say="${q.w.en}">🔊 提示</button>`;
+      const form = document.createElement('form');
+      form.innerHTML = '<input autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="輸入英文"><button class="btn">送出</button>';
+      form.onsubmit = (e) => {
+        e.preventDefault();
+        if (answered) return;
+        const v = form.querySelector('input')!.value.trim().toLowerCase().replace(/[’']/g, "'");
+        finish(v === q.w.en.toLowerCase().replace(/[’']/g, "'"), q.w.en);
+      };
+      body.append(form);
+      form.querySelector('input')!.focus();
+      return;
+    }
+    const field = q.kind === 'zh2en' ? 'en' : 'zh';
+    const right = q.w[field];
+    if (q.kind === 'zh2en') $('.q-text').innerHTML = `「<b>${q.w.zh}</b>」的英文是？`;
+    else { $('.q-text').innerHTML = `聽聽看，這是什麼意思？ <button class="say" data-say="${q.w.en}">🔊 再聽一次</button>`; say(q.w.en); }
+    options(q.w, field).forEach((o) => {
+      const b = document.createElement('button');
+      b.className = 'opt';
+      b.textContent = o;
+      b.onclick = () => {
+        if (answered) return;
+        b.classList.add(o === right ? 'good' : 'bad');
+        body.querySelectorAll<HTMLElement>('.opt').forEach((x) => { if (x.textContent === right) x.classList.add('good'); });
+        finish(o === right, right);
+      };
+      body.append(b);
+    });
+  }
+  function result() {
+    const pct = Math.round((score / questions.length) * 100);
+    try {
+      const p = JSON.parse(localStorage.getItem('lel-progress') || '{}');
+      p[data.id] = { best: Math.max(pct, p[data.id]?.best || 0), at: Date.now() };
+      localStorage.setItem('lel-progress', JSON.stringify(p));
+    } catch {}
+    $('.q-progress').textContent = '測驗完成';
+    $('.q-text').innerHTML = `你答對 <b>${score} / ${questions.length}</b> 題（${pct} 分）${pct >= 80 ? '，小石給你一個讚 👍' : '，再複習一下單字卡吧！'}`;
+    $('.q-body').innerHTML = '<button class="btn ghost" onclick="location.reload()">再測一次</button>';
+    $('.q-feedback').textContent = '';
+    $('.q-next').hidden = true;
+  }
+  $('.q-next').onclick = () => { i++; i < questions.length ? render() : result(); };
+  render();
+</script>
+
+<style>
+  .crumb { font-size: 14px; color: var(--muted); margin: 4px 0; }
+  .head h1 { font-size: 36px; margin: 6px 0 0; }
+  .head .en { font-size: 22px; color: var(--teal); }
+  .head p { color: var(--muted); margin: 6px 0; }
+  .tip { font-size: 14px; }
+  h2 { font-size: 24px; margin: 28px 0 12px; }
+  .say { border: 0; background: none; font-size: 20px; cursor: pointer; padding: 2px 4px; }
+  .words { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+  .flip { position: relative; height: 170px; perspective: 800px; cursor: pointer; outline: none; }
+  .face { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    padding: 10px; backface-visibility: hidden; transition: transform .45s; }
+  .back { transform: rotateY(180deg); }
+  .flip.on .front { transform: rotateY(180deg); }
+  .flip.on .back { transform: rotateY(360deg); }
+  .flip:focus-visible .face { outline: 3px solid var(--accent); }
+  .icon { font-size: 40px; line-height: 1.2; }
+  .front b { font-size: 21px; }
+  .back b { font-size: 20px; }
+  .ex { font-size: 14px; margin-top: 6px; }
+  .exzh { font-size: 13px; color: var(--muted); }
+  .sents { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .sents li { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 16px; }
+  .sents b { font-size: 19px; margin-right: 8px; }
+  .sents .zh { display: block; color: var(--muted); }
+  .note { font-size: 12px; vertical-align: middle; }
+  .btns { flex: none; }
+  .quiz { padding: 18px 20px; }
+  .q-progress { margin: 0; color: var(--muted); font-size: 14px; }
+  .q-text { font-size: 20px; margin: 6px 0 12px; }
+  .q-body { display: grid; gap: 10px; }
+  .opt { text-align: left; font-size: 18px; padding: 10px 14px; border: 2px solid var(--ink); border-radius: 12px; background: var(--paper); cursor: pointer; }
+  .opt.good { background: #DFF3E6; border-color: var(--good); }
+  .opt.bad { background: #FBE3E3; border-color: var(--bad); }
+  .q-body form { display: flex; gap: 10px; flex-wrap: wrap; }
+  .q-body input { flex: 1; min-width: 180px; font-size: 18px; padding: 8px 12px; border: 2px solid var(--ink); border-radius: 12px; }
+  .q-feedback { min-height: 1.6em; font-weight: 700; }
+  .q-feedback.good { color: var(--good); }
+  .q-feedback.bad { color: var(--bad); }
+  .next { text-align: right; margin-top: 28px; }
+  @media (max-width: 600px) { .head h1 { font-size: 28px; } .words { grid-template-columns: repeat(2, 1fr); } .flip { height: 160px; } }
+</style>

@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="關於小石" description="生活英文研究所的研究員：台灣石虎小石 Leo，每天研究生活裡的英文怎麼說。">
+  <section class="card about">
+    <img src="/leo.jpg" alt="小石 Leo" width="200" height="200" />
+    <div>
+      <h1>我是小石 Leo</h1>
+      <p>我是一隻台灣石虎，也是「生活英文研究所」的研究員。超商、計程車、辦公室……我把生活裡遇到的東西都拿來研究：這個英文到底怎麼說？</p>
+      <p>這裡的每一課都很短：聽發音、翻單字卡、跟著唸幾句，再做個小測驗。不用註冊，進度會記在你自己的瀏覽器裡。</p>
+      <p>每天的新圖卡會發在 Facebook 粉專，歡迎來找我玩：<a href="https://www.facebook.com/profile.php?id=61595332658218" rel="noopener">生活英文研究所</a></p>
+    </div>
+  </section>
+</Base>
+<style>
+  .about { display: flex; gap: 24px; padding: 22px; margin-top: 8px; align-items: flex-start; }
+  .about img { border-radius: 50%; border: 3px solid var(--ink); flex: none; }
+  h1 { margin: 0 0 8px; }
+  @media (max-width: 600px) { .about { flex-direction: column; align-items: center; } }
+</style>
