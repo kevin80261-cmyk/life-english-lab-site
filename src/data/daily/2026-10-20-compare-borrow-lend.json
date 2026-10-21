@@ -1,0 +1,44 @@
+{
+  "id": "2026-10-20-compare-borrow-lend",
+  "type": "compare",
+  "title": "Borrow vs Lend",
+  "subtitle": "都是「借」，差在誰借給誰",
+  "sides": [
+    {
+      "word": "borrow",
+      "meaning": "借入",
+      "rule": "跟別人「借來」用",
+      "examples": [
+        {
+          "en": "Can I borrow your pen?",
+          "zh": "我可以跟你借筆嗎？"
+        },
+        {
+          "en": "I borrowed a book from the library.",
+          "zh": "我跟圖書館借了一本書。"
+        }
+      ],
+      "image": "assets/ai-images/2026-10-20-borrow.png"
+    },
+    {
+      "word": "lend",
+      "meaning": "借出",
+      "rule": "把東西「借給」別人",
+      "examples": [
+        {
+          "en": "Can you lend me your umbrella?",
+          "zh": "你可以借我雨傘嗎？"
+        },
+        {
+          "en": "I lent him 500 dollars.",
+          "zh": "我借他五百元。"
+        }
+      ],
+      "image": "assets/ai-images/2026-10-20-lend.jpg"
+    }
+  ],
+  "tip": {
+    "label": "一句話記住",
+    "text": "borrow 拿進來，lend 給出去"
+  }
+}

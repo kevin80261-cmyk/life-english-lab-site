@@ -1,0 +1,69 @@
+{
+  "id": "2026-10-19-scene-nightmarket",
+  "type": "scene",
+  "title": "逛夜市",
+  "title_en": "Night Market",
+  "subtitle": "邊吃邊學，這 10 個最常用",
+  "labels": [
+    {
+      "en": "food stall",
+      "zh": "小吃攤",
+      "x": 34,
+      "y": 12
+    },
+    {
+      "en": "lantern",
+      "zh": "燈籠",
+      "x": 8.5,
+      "y": 19
+    },
+    {
+      "en": "vendor",
+      "zh": "攤販",
+      "x": 14,
+      "y": 45
+    },
+    {
+      "en": "crowd",
+      "zh": "人潮",
+      "x": 58,
+      "y": 45
+    },
+    {
+      "en": "carnival game",
+      "zh": "夜市遊戲",
+      "x": 87,
+      "y": 33
+    },
+    {
+      "en": "oyster omelet",
+      "zh": "蚵仔煎",
+      "x": 34,
+      "y": 62
+    },
+    {
+      "en": "grilled corn",
+      "zh": "烤玉米",
+      "x": 69,
+      "y": 66
+    },
+    {
+      "en": "fried chicken",
+      "zh": "炸雞",
+      "x": 18,
+      "y": 80
+    },
+    {
+      "en": "bubble tea",
+      "zh": "珍珠奶茶",
+      "x": 48,
+      "y": 78
+    },
+    {
+      "en": "skewers",
+      "zh": "烤串",
+      "x": 84,
+      "y": 80
+    }
+  ]
+}

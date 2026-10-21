@@ -1,0 +1,32 @@
+{
+  "id": "2026-10-21-howto-hardwork",
+  "type": "howto",
+  "title": "「辛苦了」",
+  "subtitle": "英文沒有一模一樣的說法，看情境選",
+  "items": [
+    {
+      "en": "Thanks for your hard work.",
+      "zh": "謝謝你的辛苦付出。",
+      "note": "最常用"
+    },
+    {
+      "en": "Good job today!",
+      "zh": "今天辛苦了，做得很好！",
+      "note": "下班"
+    },
+    {
+      "en": "You must be tired.",
+      "zh": "你一定累壞了吧。",
+      "note": "關心"
+    },
+    {
+      "en": "I really appreciate it.",
+      "zh": "真的很感謝你。",
+      "note": "正式"
+    }
+  ],
+  "wrong": {
+    "en": "You are hard.",
+    "why": "逐字直翻，英文完全不是這個意思"
+  }
+}
