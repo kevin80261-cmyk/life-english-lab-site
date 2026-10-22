@@ -1,0 +1,41 @@
+{
+  "id": "2026-10-22-sentences-restaurant",
+  "type": "sentences",
+  "title": "餐廳點餐",
+  "title_en": "Ordering Food",
+  "subtitle": "從入座到結帳，這 8 句就夠用",
+  "items": [
+    {
+      "en": "Can we get a table for two?",
+      "zh": "可以給我們兩人桌嗎？"
+    },
+    {
+      "en": "Could we see the menu, please?",
+      "zh": "可以給我們菜單嗎？"
+    },
+    {
+      "en": "What do you recommend?",
+      "zh": "你推薦什麼？"
+    },
+    {
+      "en": "I'll have the beef noodles.",
+      "zh": "我要牛肉麵。"
+    },
+    {
+      "en": "Can I get it without cilantro?",
+      "zh": "可以不要加香菜嗎？"
+    },
+    {
+      "en": "Could I get some water, please?",
+      "zh": "可以給我一點水嗎？"
+    },
+    {
+      "en": "Can we get the check, please?",
+      "zh": "可以幫我們結帳嗎？"
+    },
+    {
+      "en": "Can we split the bill?",
+      "zh": "可以分開付嗎？"
+    }
+  ]
+}
