@@ -1,0 +1,41 @@
+{
+  "id": "2026-10-24-sentences-longweekend",
+  "type": "sentences",
+  "title": "連假聊天",
+  "title_en": "Long Weekend",
+  "subtitle": "放假前後最常聊的 8 句",
+  "items": [
+    {
+      "en": "Any plans for the long weekend?",
+      "zh": "連假有什麼計畫？"
+    },
+    {
+      "en": "We're going on a road trip.",
+      "zh": "我們要開車出去玩。"
+    },
+    {
+      "en": "I'm just staying home to relax.",
+      "zh": "我只想待在家放鬆。"
+    },
+    {
+      "en": "Have you booked a hotel yet?",
+      "zh": "你訂好飯店了嗎？"
+    },
+    {
+      "en": "The traffic is going to be terrible.",
+      "zh": "路上一定超塞。"
+    },
+    {
+      "en": "Everywhere is so crowded.",
+      "zh": "到處都人擠人。"
+    },
+    {
+      "en": "I need a vacation from my vacation.",
+      "zh": "玩完比上班還累。"
+    },
+    {
+      "en": "Have a great long weekend!",
+      "zh": "連假愉快！"
+    }
+  ]
+}
