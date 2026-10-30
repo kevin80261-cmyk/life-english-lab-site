@@ -1,0 +1,41 @@
+{
+  "id": "2026-10-29-sentences-coldweather",
+  "type": "sentences",
+  "title": "變天了",
+  "title_en": "Cold Weather",
+  "subtitle": "東北季風來了，聊天氣這 8 句最好用",
+  "items": [
+    {
+      "en": "It's getting cold.",
+      "zh": "天氣變冷了。"
+    },
+    {
+      "en": "The temperature dropped a lot today.",
+      "zh": "今天溫度掉好多。"
+    },
+    {
+      "en": "It's so chilly this morning.",
+      "zh": "今天早上冷颼颼的。"
+    },
+    {
+      "en": "Don't forget to bring a jacket.",
+      "zh": "記得帶件外套。"
+    },
+    {
+      "en": "You should dress warmly.",
+      "zh": "你要穿暖一點。"
+    },
+    {
+      "en": "It's been raining all day.",
+      "zh": "下了一整天的雨。"
+    },
+    {
+      "en": "I think I'm catching a cold.",
+      "zh": "我好像快感冒了。"
+    },
+    {
+      "en": "Let's get something hot to eat.",
+      "zh": "我們去吃點熱的吧。"
+    }
+  ]
+}
