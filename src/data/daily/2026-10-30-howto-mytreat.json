@@ -1,0 +1,32 @@
+{
+  "id": "2026-10-30-howto-mytreat",
+  "type": "howto",
+  "title": "「我請客」",
+  "subtitle": "請朋友吃飯、搶著買單，英文這樣說",
+  "items": [
+    {
+      "en": "It's on me.",
+      "zh": "我請客。",
+      "note": "最常用"
+    },
+    {
+      "en": "My treat.",
+      "zh": "我請。",
+      "note": "簡短"
+    },
+    {
+      "en": "I'll get this one.",
+      "zh": "這次我來付。",
+      "note": "搶買單"
+    },
+    {
+      "en": "Dinner's on me tonight.",
+      "zh": "今晚的晚餐我請。",
+      "note": "說哪一餐"
+    }
+  ],
+  "wrong": {
+    "en": "I invite you.",
+    "why": "invite 只是邀請，沒有要幫你付錢的意思"
+  }
+}
