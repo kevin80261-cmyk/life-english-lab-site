@@ -1,0 +1,41 @@
+{
+  "id": "2026-10-31-sentences-hotpot",
+  "type": "sentences",
+  "title": "吃火鍋",
+  "title_en": "Hot Pot",
+  "subtitle": "天氣一冷就想吃，火鍋店這 8 句學起來",
+  "items": [
+    {
+      "en": "Let's have hot pot tonight!",
+      "zh": "今晚來吃火鍋吧！"
+    },
+    {
+      "en": "Which broth do you want?",
+      "zh": "你想要哪種湯底？"
+    },
+    {
+      "en": "Can we get half spicy, half mild?",
+      "zh": "可以一半辣、一半不辣嗎？"
+    },
+    {
+      "en": "How spicy is the mala broth?",
+      "zh": "麻辣湯底有多辣？"
+    },
+    {
+      "en": "Could we get some more beef?",
+      "zh": "可以再加點牛肉嗎？"
+    },
+    {
+      "en": "Where's the sauce bar?",
+      "zh": "醬料區在哪裡？"
+    },
+    {
+      "en": "Could you add some more broth, please?",
+      "zh": "可以幫我們加湯嗎？"
+    },
+    {
+      "en": "Don't overcook the meat!",
+      "zh": "肉不要煮太老！"
+    }
+  ]
+}
