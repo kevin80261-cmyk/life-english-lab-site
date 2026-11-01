@@ -1,0 +1,44 @@
+{
+  "id": "2026-11-01-compare-bored-boring",
+  "type": "compare",
+  "title": "Bored vs Boring",
+  "subtitle": "都是「無聊」，差在誰覺得",
+  "sides": [
+    {
+      "word": "bored",
+      "meaning": "覺得無聊",
+      "rule": "「人」覺得很無聊",
+      "image": "assets/ai-images/2026-11-01-bored-sofa.jpg",
+      "examples": [
+        {
+          "en": "I'm so bored at home.",
+          "zh": "我在家好無聊。"
+        },
+        {
+          "en": "She got bored and left early.",
+          "zh": "她覺得無聊，就先走了。"
+        }
+      ]
+    },
+    {
+      "word": "boring",
+      "meaning": "令人無聊",
+      "rule": "「事情」本身很無聊",
+      "image": "assets/ai-images/2026-11-01-boring-meeting.jpg",
+      "examples": [
+        {
+          "en": "This meeting is so boring.",
+          "zh": "這個會議好無聊。"
+        },
+        {
+          "en": "The movie was kind of boring.",
+          "zh": "那部電影有點無聊。"
+        }
+      ]
+    }
+  ],
+  "tip": {
+    "label": "一句話記住",
+    "text": "人覺得 bored，事情很 boring"
+  }
+}
