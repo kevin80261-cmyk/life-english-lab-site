@@ -1,0 +1,32 @@
+{
+  "id": "2026-11-02-howto-almostthere",
+  "type": "howto",
+  "title": "「我快到了」",
+  "subtitle": "跟朋友約了快遲到，傳訊息這樣說",
+  "items": [
+    {
+      "en": "I'm almost there.",
+      "zh": "我快到了。",
+      "note": "最常用"
+    },
+    {
+      "en": "I'm on my way.",
+      "zh": "我在路上了。",
+      "note": "剛出門"
+    },
+    {
+      "en": "I'll be there in 5.",
+      "zh": "我五分鐘後到。",
+      "note": "說時間"
+    },
+    {
+      "en": "I'm just around the corner.",
+      "zh": "我就在附近了。",
+      "note": "很近了"
+    }
+  ],
+  "wrong": {
+    "en": "I almost arrive.",
+    "why": "這是中式英文，要說 I'm almost there."
+  }
+}
