@@ -1,0 +1,41 @@
+{
+  "id": "2026-11-04-sentences-callinsick",
+  "type": "sentences",
+  "title": "打電話請假",
+  "title_en": "Calling in Sick",
+  "subtitle": "身體不舒服要請假，這 8 句跟主管說",
+  "items": [
+    {
+      "en": "I'm not feeling well today.",
+      "zh": "我今天不太舒服。"
+    },
+    {
+      "en": "I think I have a fever.",
+      "zh": "我好像發燒了。"
+    },
+    {
+      "en": "I need to take a sick day.",
+      "zh": "我需要請一天病假。"
+    },
+    {
+      "en": "I won't be able to come in today.",
+      "zh": "我今天沒辦法進公司。"
+    },
+    {
+      "en": "I'm going to see a doctor.",
+      "zh": "我等一下要去看醫生。"
+    },
+    {
+      "en": "I'll keep an eye on my email.",
+      "zh": "我會隨時看一下信箱。"
+    },
+    {
+      "en": "Could you cover for me today?",
+      "zh": "今天可以幫我代一下嗎？"
+    },
+    {
+      "en": "I should be back tomorrow.",
+      "zh": "我明天應該就能回去上班。"
+    }
+  ]
+}
