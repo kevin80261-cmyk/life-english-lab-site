@@ -1,0 +1,45 @@
+{
+  "id": "2026-11-06-compare-remember-remind",
+  "type": "compare",
+  "title": "Remember vs Remind",
+  "subtitle": "都跟「記得」有關，差在誰記",
+  "sides": [
+    {
+      "word": "remember",
+      "meaning": "記得",
+      "rule": "自己「記得」某件事",
+      "image": "assets/ai-images/2026-11-06-remember-keys.jpg",
+      "image_pos": "center 0%",
+      "examples": [
+        {
+          "en": "I remember his name.",
+          "zh": "我記得他的名字。"
+        },
+        {
+          "en": "Remember to bring your keys.",
+          "zh": "記得帶鑰匙。"
+        }
+      ]
+    },
+    {
+      "word": "remind",
+      "meaning": "提醒",
+      "rule": "讓別人「想起來」",
+      "image": "assets/ai-images/2026-11-06-remind-umbrella.jpg",
+      "examples": [
+        {
+          "en": "Remind me to call Mom.",
+          "zh": "提醒我打給媽媽。"
+        },
+        {
+          "en": "This song reminds me of you.",
+          "zh": "這首歌讓我想到你。"
+        }
+      ]
+    }
+  ],
+  "tip": {
+    "label": "一句話記住",
+    "text": "自己記得 remember，叫人想起 remind"
+  }
+}
