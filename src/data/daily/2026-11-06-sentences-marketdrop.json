@@ -1,0 +1,41 @@
+{
+  "id": "2026-11-06-sentences-marketdrop",
+  "type": "sentences",
+  "title": "股市大跌",
+  "title_en": "Market Crash",
+  "subtitle": "看財經新聞一定會遇到的 8 句",
+  "items": [
+    {
+      "en": "Stocks plunged this morning.",
+      "zh": "股市今天早上暴跌。"
+    },
+    {
+      "en": "Tech stocks tumbled today.",
+      "zh": "科技股今天重挫。"
+    },
+    {
+      "en": "There was a huge sell-off.",
+      "zh": "出現一波大量拋售。"
+    },
+    {
+      "en": "The market closed in the red.",
+      "zh": "股市今天收跌。"
+    },
+    {
+      "en": "Panic selling made it worse.",
+      "zh": "恐慌性賣壓讓跌勢更重。"
+    },
+    {
+      "en": "Some are calling it a bear market.",
+      "zh": "有人說這已經是熊市了。"
+    },
+    {
+      "en": "The drop wiped out this year's gains.",
+      "zh": "這波下跌把今年的漲幅都吃掉了。"
+    },
+    {
+      "en": "Is this a market crash?",
+      "zh": "這算是股災嗎？"
+    }
+  ]
+}
