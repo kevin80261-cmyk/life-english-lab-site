@@ -1,0 +1,32 @@
+{
+  "id": "2026-11-09-howto-noice",
+  "type": "howto",
+  "title": "「去冰」",
+  "subtitle": "在國外點飲料，冰塊多少這樣說",
+  "items": [
+    {
+      "en": "No ice, please.",
+      "zh": "去冰，謝謝。",
+      "note": "最常用"
+    },
+    {
+      "en": "Less ice, please.",
+      "zh": "少冰，謝謝。",
+      "note": "少冰"
+    },
+    {
+      "en": "Just a little ice, please.",
+      "zh": "冰塊一點點就好。",
+      "note": "微冰"
+    },
+    {
+      "en": "Can I get it with no ice?",
+      "zh": "可以幫我去冰嗎？",
+      "note": "客氣問"
+    }
+  ],
+  "wrong": {
+    "en": "Remove the ice, please.",
+    "why": "remove 是把放進去的東西拿掉，點餐時說 No ice, please."
+  }
+}
