@@ -1,0 +1,41 @@
+{
+  "id": "2026-11-11-sentences-onlineshopping",
+  "type": "sentences",
+  "title": "雙11網購",
+  "title_en": "Online Shopping",
+  "subtitle": "搶購、結帳、等出貨，這 8 句最常用",
+  "items": [
+    {
+      "en": "I added it to my cart.",
+      "zh": "我把它加進購物車了。"
+    },
+    {
+      "en": "Is there free shipping?",
+      "zh": "有免運嗎？"
+    },
+    {
+      "en": "The flash sale starts at midnight.",
+      "zh": "限時搶購半夜開始。"
+    },
+    {
+      "en": "It's already sold out!",
+      "zh": "已經賣完了！"
+    },
+    {
+      "en": "This coupon has expired.",
+      "zh": "這張折價券過期了。"
+    },
+    {
+      "en": "I'm going to check out now.",
+      "zh": "我要去結帳了。"
+    },
+    {
+      "en": "My order hasn't shipped yet.",
+      "zh": "我的訂單還沒出貨。"
+    },
+    {
+      "en": "I went way over budget.",
+      "zh": "我的預算整個爆掉了。"
+    }
+  ]
+}
