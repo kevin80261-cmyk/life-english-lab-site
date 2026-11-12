@@ -1,0 +1,41 @@
+{
+  "id": "2026-11-12-sentences-returns",
+  "type": "sentences",
+  "title": "退換貨",
+  "title_en": "Returns & Exchanges",
+  "subtitle": "雙11包裹到了，不合適就這樣說",
+  "items": [
+    {
+      "en": "I'd like to return this.",
+      "zh": "我想退貨。"
+    },
+    {
+      "en": "Can I exchange it for a different size?",
+      "zh": "可以換別的尺寸嗎？"
+    },
+    {
+      "en": "It doesn't fit.",
+      "zh": "尺寸不合。"
+    },
+    {
+      "en": "It arrived damaged.",
+      "zh": "收到的時候就壞了。"
+    },
+    {
+      "en": "This isn't what I ordered.",
+      "zh": "這不是我訂的東西。"
+    },
+    {
+      "en": "Can I get a refund?",
+      "zh": "可以退款嗎？"
+    },
+    {
+      "en": "Do I have to pay for return shipping?",
+      "zh": "退貨運費要我付嗎？"
+    },
+    {
+      "en": "When will I get my money back?",
+      "zh": "什麼時候會退錢給我？"
+    }
+  ]
+}
