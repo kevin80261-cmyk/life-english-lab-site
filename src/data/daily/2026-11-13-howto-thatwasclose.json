@@ -1,0 +1,32 @@
+{
+  "id": "2026-11-13-howto-thatwasclose",
+  "type": "howto",
+  "title": "「好險」",
+  "subtitle": "差一點就出事，鬆一口氣時這樣說",
+  "items": [
+    {
+      "en": "That was close.",
+      "zh": "好險，差一點就⋯⋯",
+      "note": "最常用"
+    },
+    {
+      "en": "Phew!",
+      "zh": "呼，好險！",
+      "note": "鬆口氣"
+    },
+    {
+      "en": "That was a close call.",
+      "zh": "真是千鈞一髮。",
+      "note": "差點出事"
+    },
+    {
+      "en": "Thank goodness.",
+      "zh": "還好、謝天謝地。",
+      "note": "還好"
+    }
+  ],
+  "wrong": {
+    "en": "So dangerous!",
+    "why": "dangerous 是說事情本身很危險，躲過一劫要說 That was close."
+  }
+}
