@@ -1,0 +1,32 @@
+{
+  "id": "2026-11-17-howto-freezing",
+  "type": "howto",
+  "title": "「冷死了」",
+  "subtitle": "冷空氣來了，冷到受不了這樣說",
+  "items": [
+    {
+      "en": "I'm freezing.",
+      "zh": "我快冷死了。",
+      "note": "最常用"
+    },
+    {
+      "en": "It's freezing out.",
+      "zh": "外面超冷。",
+      "note": "說天氣"
+    },
+    {
+      "en": "It's so cold today.",
+      "zh": "今天好冷喔。",
+      "note": "最簡單"
+    },
+    {
+      "en": "Bundle up!",
+      "zh": "多穿一點！",
+      "note": "提醒別人"
+    }
+  ],
+  "wrong": {
+    "en": "I'm cold to death.",
+    "why": "英文不說 cold to death，冷到不行要說 I'm freezing."
+  }
+}
