@@ -1,0 +1,46 @@
+{
+  "id": "2026-11-18-compare-hear-listen",
+  "type": "compare",
+  "title": "Hear vs Listen",
+  "subtitle": "都是「聽」，差在有沒有用心",
+  "sides": [
+    {
+      "word": "hear",
+      "meaning": "聽到",
+      "rule": "聲音自己「傳進耳朵」",
+      "examples": [
+        {
+          "en": "Did you hear that noise?",
+          "zh": "你有聽到那個聲音嗎？"
+        },
+        {
+          "en": "I can't hear you.",
+          "zh": "我聽不到你說話。"
+        }
+      ],
+      "image": "assets/ai-images/2026-11-18-hear-noise.jpg",
+      "image_pos": "center 40%"
+    },
+    {
+      "word": "listen",
+      "meaning": "聆聽",
+      "rule": "專心「去聽」",
+      "examples": [
+        {
+          "en": "I'm listening to music.",
+          "zh": "我在聽音樂。"
+        },
+        {
+          "en": "Please listen carefully.",
+          "zh": "請仔細聽。"
+        }
+      ],
+      "image": "assets/ai-images/2026-11-18-listen-music.jpg",
+      "image_pos": "center 35%"
+    }
+  ],
+  "tip": {
+    "label": "一句話記住",
+    "text": "聽到用 hear，用心聽用 listen"
+  }
+}
