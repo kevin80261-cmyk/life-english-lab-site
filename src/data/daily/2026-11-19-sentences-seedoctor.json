@@ -1,0 +1,41 @@
+{
+  "id": "2026-11-19-sentences-seedoctor",
+  "type": "sentences",
+  "title": "看醫生",
+  "title_en": "Seeing a Doctor",
+  "subtitle": "天氣變冷容易感冒，跟醫生這樣說",
+  "items": [
+    {
+      "en": "I think I caught a cold.",
+      "zh": "我好像感冒了。"
+    },
+    {
+      "en": "I have a sore throat.",
+      "zh": "我喉嚨痛。"
+    },
+    {
+      "en": "I've had a fever since yesterday.",
+      "zh": "我從昨天開始發燒。"
+    },
+    {
+      "en": "I have a runny nose.",
+      "zh": "我一直流鼻水。"
+    },
+    {
+      "en": "I keep coughing.",
+      "zh": "我一直咳嗽。"
+    },
+    {
+      "en": "My whole body aches.",
+      "zh": "我全身痠痛。"
+    },
+    {
+      "en": "How often should I take this?",
+      "zh": "這個藥多久吃一次？"
+    },
+    {
+      "en": "Should I take it after meals?",
+      "zh": "要飯後吃嗎？"
+    }
+  ]
+}
